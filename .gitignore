@@ -1,0 +1,303 @@
+# =============================================================================
+# .gitignore - Projeto MNIST Digit Classifier
+# Pipeline de Classificação com Random Forest, KNN e MLP (scikit-learn)
+# =============================================================================
+
+
+# =============================================================================
+# 1. PYTHON - ARQUIVOS COMPILADOS E CACHE
+# =============================================================================
+
+# Bytecode compilado do Python (gerado automaticamente)
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Arquivos C-extension compilados
+*.so
+
+# Distribuição e empacotamento
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Logs de instalação
+pip-log.txt
+pip-delete-this-directory.txt
+
+
+# =============================================================================
+# 2. AMBIENTES VIRTUAIS
+# =============================================================================
+
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+virtualenv/
+
+
+# =============================================================================
+# 3. JUPYTER NOTEBOOK
+# =============================================================================
+
+# Checkpoints automáticos do Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Configurações do JupyterLab
+.jupyter/
+jupyter_config.json
+
+
+# =============================================================================
+# 4. IDE / EDITOR
+# =============================================================================
+
+# Visual Studio Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# PyCharm / IntelliJ
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Spyder
+.spyderproject
+.spyproject
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+\#*\#
+.\#*
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+
+# =============================================================================
+# 5. SISTEMA OPERACIONAL
+# =============================================================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux
+.directory
+.Trash-*
+
+
+# =============================================================================
+# 6. DADOS - DATASETS E ARQUIVOS GRANDES
+# =============================================================================
+
+# Datasets brutos e processados (MNIST é baixado automaticamente)
+data/raw/
+data/processed/
+
+# Arquivos de dados grandes
+*.csv
+*.tsv
+*.h5
+*.hdf5
+*.npz
+*.npy
+*.parquet
+*.feather
+
+# ⚠️ EXCEÇÃO: Manter as imagens próprias do Desafio C
+!data/own_images/
+!data/own_images/*.jpg
+!data/own_images/*.jpeg
+!data/own_images/*.png
+
+# ⚠️ EXCEÇÃO: Manter dados de exemplo pequenos
+!data/samples/
+!data/samples/*
+
+
+# =============================================================================
+# 7. RESULTADOS E OUTPUTS
+# =============================================================================
+
+# Resultados gerados durante execução
+results/
+output/
+outputs/
+
+# Gráficos e figuras gerados automaticamente
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.pdf
+*.eps
+
+# ⚠️ EXCEÇÃO: Manter imagens usadas no README
+!docs/images/
+!docs/images/*.png
+!docs/images/*.jpg
+!docs/images/*.jpeg
+
+# Logs
+*.log
+logs/
+*.log.*
+
+# Métricas exportadas
+metrics/
+
+
+# =============================================================================
+# 8. MODELOS TREINADOS
+# =============================================================================
+
+# Modelos salvos com joblib/pickle
+models/
+saved_models/
+*.pkl
+*.pickle
+*.joblib
+
+# Checkpoints
+checkpoints/
+*.ckpt
+
+
+# =============================================================================
+# 9. CREDENCIAIS E SEGURANÇA
+# =============================================================================
+
+# Arquivos de ambiente
+.env
+.env.local
+.env.*.local
+*.env
+
+# Chaves e certificados
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+
+# Configurações locais
+config.local.*
+secrets.*
+credentials.*
+
+
+# =============================================================================
+# 10. CACHE E TEMPORÁRIOS
+# =============================================================================
+
+# Cache Python
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+*.cover
+.cache
+
+# Cache geral
+cache/
+.cache/
+tmp/
+temp/
+*.tmp
+*.temp
+
+
+# =============================================================================
+# 11. ARQUIVOS ESPECÍFICOS DO PROJETO
+# =============================================================================
+
+# Imagens processadas temporárias (Desafio C)
+temp_processed_*.png
+processed_*.jpg
+
+# Arquivos de debug
+debug_*.py
+test_*.tmp
+
+# Notebooks temporários
+*_temp.ipynb
+*_test.ipynb
+untitled*.ipynb
+
+
+# =============================================================================
+# RESUMO
+# =============================================================================
+#
+# ✅ IGNORA:
+#    • Ambientes virtuais (venv/)
+#    • Cache Python (__pycache__/)
+#    • Checkpoints do Jupyter (.ipynb_checkpoints/)
+#    • Configurações de IDE (.vscode/, .idea/)
+#    • Arquivos do sistema (.DS_Store, Thumbs.db)
+#    • Datasets grandes e processados
+#    • Resultados gerados (imagens, logs)
+#    • Modelos treinados (.pkl, .joblib)
+#    • Credenciais (.env, chaves)
+#    • Cache e temporários
+#
+# ✅ MANTÉM VERSIONADO:
+#    • Código fonte (.py, .ipynb)
+#    • README.md
+#    • requirements.txt
+#    • LICENSE
+#    • Imagens próprias (data/own_images/)
+#    • Imagens do README (docs/images/)
+#
+# =============================================================================
