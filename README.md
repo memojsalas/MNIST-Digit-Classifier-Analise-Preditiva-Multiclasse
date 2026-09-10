@@ -1,14 +1,5 @@
 # 🧠 MNIST Digit Classifier — Análise Preditiva Multiclasse
 
-![Python](https://img.shields.io/badge/Python-3.9%20a%203.13-blue.svg)
-![Scikit-learn](https://img.shields.io/badge/Scikit--learn-1.3+-green.svg)
-![NumPy](https://img.shields.io/badge/NumPy-1.24+-orange.svg)
-![Pandas](https://img.shields.io/badge/Pandas-2.0+-purple.svg)
-![License](https://img.shields.io/badge/License-MIT-yellow.svg)
-![Status](https://img.shields.io/badge/Status-Concluído-success.svg)
-![Contributions](https://img.shields.io/badge/Contribuições-Bem--vindas-brightgreen.svg)
-
----
 
 ## 📋 Índice
 
