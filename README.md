@@ -102,59 +102,25 @@ from PIL import Image, ImageOps
 
 ## 🏗️ Arquitetura do Pipeline
 
-### Fluxograma Técnico
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                    MNIST DATASET                                │
-│                 70.000 imagens (28×28)                          │
-└──────────────────────┬──────────────────────────────────────────┘
-                       │
-                       ▼
-┌─────────────────────────────────────────────────────────────────┐
-│           FASE 1: ANÁLISE EXPLORATÓRIA (EDA)                    │
-│  • Carregamento via fetch_openml                                │
-│  • Análise da dimensionalidade (X: 70000×784; y: 70000)         │
-│  • Verificação de balanceamento das classes                     │
-│  • Grade visual 2×5 com exemplos de cada dígito                 │
-│  • Interpretação da estrutura (0–255, 28×28 → 784 features)     │
-└──────────────────────┬──────────────────────────────────────────┘
-                       │
-                       ▼
-┌─────────────────────────────────────────────────────────────────┐
-│              FASE 2: PRÉ-PROCESSAMENTO                          │
-│  • Divisão estratificada (70% / 10% / 20%)                      │
-│  • Normalização dos pixels [0.0, 1.0]                           │
-│  • Justificativa técnica da normalização                        │
-└──────────────────────┬──────────────────────────────────────────┘
-                       │
-                       ▼
-┌─────────────────────────────────────────────────────────────────┐
-│            FASE 3: IMPLEMENTAÇÃO DOS MODELOS                    │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐              │
-│  │Random Forest│  │     KNN     │  │     MLP     │              │
-│  │100 árvores  │  │   k=5       │  │256-128-64   │              │
-│  │depth=20     │  │ distance    │  │ early stop  │              │
-│  └─────────────┘  └─────────────┘  └─────────────┘              │
-└──────────────────────┬──────────────────────────────────────────┘
-                       │
-                       ▼
-┌─────────────────────────────────────────────────────────────────┐
-│            FASE 4: AVALIAÇÃO COMPARATIVA                        │
-│  • Acurácia, Precisão, Recall, F1 (weighted)                    │
-│  • Matriz de confusão 10×10 (heatmap)                           │
-│  • Tabela consolidada + gráfico de trade-off                    │
-└──────────────────────┬──────────────────────────────────────────┘
-                       │
-                       ▼
-┌─────────────────────────────────────────────────────────────────┐
-│            FASE 5: TESTES DE ROBUSTEZ                           │
-│  • 5.1 — Class Masking (ocultar dígitos 4 e 7)                  │
-│  • 5.2 — Inferência OOD (dados fora da distribuição)            │
-│  • 5.3 — Pipeline para imagens próprias                         │
-│  • Análise de "falsa certeza" (overconfidence)                  │
-└─────────────────────────────────────────────────────────────────┘
-```
+┌─────────────────────────────────────────────────────────────┐
+│  ETAPA 0: Importações + Criar Pastas                        │
+│  ↓                                                          │
+│  ETAPA 1: Carregar MNIST (cache local) + EDA                │
+│  ↓                                                          │
+│  ETAPA 2: Divisão 70/10/20 + Normalização                   │
+│  ↓                                                          │
+│  ETAPA 3: Treinar RF, KNN e MLP                             │
+│  ↓                                                          │
+│  ETAPA 4: Avaliar e comparar os 3 modelos                   │
+│  ↓                                                          │
+│  ETAPA 5.1: Class Masking (ocultar 4 e 7)                   │
+│  ↓                                                          │
+│  ETAPA 5.2: Inferência OOD (testar com 4 e 7)               │
+│  ↓                                                          │
+│  ETAPA 5.3: Predição com imagens próprias                   │
+│  ↓                                                          │
+│  RESULTADOS: Figuras em results/                            │
+└─────────────────────────────────────────────────────────────┘
 
 ---
 
@@ -163,33 +129,60 @@ from PIL import Image, ImageOps
 ```
 mnist-digit-classifier/
 │
-├── 📓 mnist_pipeline.ipynb          # Notebook principal
-├── 🐍 mnist_pipeline.py             # Versão em script Python (opcional)
+├── 📄 .gitignore                          # Arquivos ignorados pelo Git
+├── 📄 README.md                            # Documentação principal
+├── 📄 requirements.txt                     # Dependências do projeto
+├── 📄 LICENSE                              # Licença MIT
 │
-├── 📄 README.md                      # Documentação completa
-├── 📋 requirements.txt               # Dependências do projeto
-├── 📝 .gitignore                     # Arquivos ignorados pelo Git
-├── 📜 LICENSE                        # Licença MIT
+├── 📓 mnist_pipeline.ipynb                 # Notebook principal
+├── 🐍 mnist_pipeline.py                    # Versão em script Python (opcional)
+├── 🐍 check_requirements.py                # Script de verificação de dependências
 │
-├── 📊 data/                          # Dados do projeto
-│   ├── raw/                          # Dados brutos (ignorados no Git)
-│   └── own_images/                   # Imagens próprias (Desafio C)
-│       ├── digit_0.jpg
-│       ├── digit_1.jpg
-│       └── ...
+├── 📁 data/                                # Dados do projeto
+│   ├── 📄 mnist.npz                        # Dataset MNIST em cache (~15 MB)
+│   └── 📁 own_images/                      # Imagens próprias (Desafio C)
+│       ├── 🖼️ digit_0.jpg
+│       ├── 🖼️ digit_1.jpg
+│       ├── 🖼️ digit_2.jpg
+│       ├── 🖼️ digit_3.jpg
+│       ├── 🖼️ digit_4.jpg
+│       ├── 🖼️ digit_5.jpg
+│       ├── 🖼️ digit_6.jpg
+│       ├── 🖼️ digit_7.jpg
+│       ├── 🖼️ digit_8.jpg
+│       └── 🖼️ digit_9.jpg
 │
-├── 📈 results/                       # Resultados (ignorados no Git)
-│   ├── confusion_matrix_*.png
-│   ├── class_distribution.png
-│   └── model_comparison.png
+├── 📁 results/                             # Resultados gerados (ignorado no Git)
+│   ├── 🖼️ class_distribution.png
+│   ├── 🖼️ digit_grid.png
+│   ├── 🖼️ mlp_learning_curve.png
+│   ├── 🖼️ confusion_matrix_Random_Forest.png
+│   ├── 🖼️ confusion_matrix_KNN.png
+│   ├── 🖼️ confusion_matrix_MLP_scikit-learn.png
+│   ├── 🖼️ confusion_matrix_ood.png
+│   ├── 🖼️ model_comparison.png
+│   ├── 🖼️ ood_confidence_threshold.png
+│   ├── 🖼️ ood_entropy.png
+│   ├── 🖼️ ood_mahalanobis.png
+│   ├── 🖼️ ood_ensemble.png
+│   ├── 🖼️ ood_calibration.png
+│   ├── 🖼️ ood_combined.png
+│   ├── 🖼️ preprocessing_pipeline.png
+│   ├── 🖼️ own_images_prediction_*.png
+│   └── 📄 comparison_table.csv
 │
-├── 📚 docs/                          # Documentação adicional
-│   └── images/                       # Imagens usadas no README
-│       ├── class_distribution.png
-│       └── model_comparison.png
+├── 📁 docs/                                # Documentação adicional
+│   └── 📁 images/                          # Imagens usadas no README
+│       ├── 🖼️ class_distribution.png
+│       ├── 🖼️ digit_grid.png
+│       ├── 🖼️ confusion_matrix_MLP.png
+│       ├── 🖼️ model_comparison.png
+│       └── 🖼️ ood_analysis.png
 │
-└── 🔬 tests/                         # Testes unitários (opcional)
-    └── test_pipeline.py
+└── 📁 tests/                               # Testes unitários (opcional)
+    ├── 🐍 test_preprocessing.py
+    ├── 🐍 test_models.py
+    └── 🐍 test_pipeline.py
 ```
 
 ---
