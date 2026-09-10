@@ -1,41 +1,101 @@
-# ============================================
-# MNIST DIGIT CLASSIFIER - DEPENDÊNCIAS
-# Projeto de Análise Preditiva Multiclasse
-# ============================================
+# =============================================================================
+# MNIST DIGIT CLASSIFIER - DEPENDÊNCIAS DO PROJETO
+# =============================================================================
+# Projeto: Classificação de dígitos manuscritos com scikit-learn
+# Modelos: Random Forest, KNN e MLP (scikit-learn)
+# Python: 3.9 a 3.13 (recomendado: 3.11 ou 3.12)
+# =============================================================================
 
-# Core Python Libraries
+
+# =============================================================================
+# CORE PYTHON LIBRARIES
+# =============================================================================
+# Bibliotecas fundamentais para computação científica e manipulação de dados
+
+# NumPy: operações matemáticas, arrays multidimensionais, álgebra linear
+# Usado para: manipulação de imagens como arrays de pixels
 numpy>=1.24.3,<2.0.0
+
+# Pandas: manipulação e análise de dados tabulares
+# Usado para: criação de tabelas comparativas de resultados
 pandas>=2.0.3,<3.0.0
+
+# SciPy: computação científica avançada
+# Usado para: operações matemáticas complementares ao NumPy
 scipy>=1.10.1,<2.0.0
 
-# Machine Learning
+
+# =============================================================================
+# MACHINE LEARNING
+# =============================================================================
+# Scikit-learn: biblioteca principal de Machine Learning do projeto
+
+# Contém todos os modelos utilizados:
+# - RandomForestClassifier (ensemble de árvores)
+# - KNeighborsClassifier (K vizinhos mais próximos)
+# - MLPClassifier (rede neural Perceptron Multicamadas)
+# Também fornece: métricas, pré-processamento, divisão de dados
 scikit-learn>=1.3.0,<2.0.0
-tensorflow>=2.13.0,<3.0.0
-keras>=2.13.1,<3.0.0
 
-# Data Visualization
+
+# =============================================================================
+# DATA VISUALIZATION
+# =============================================================================
+# Bibliotecas para criação de gráficos e visualizações
+
+# Matplotlib: criação de gráficos estáticos
+# Usado para: exibição de imagens, grade visual, gráficos comparativos
 matplotlib>=3.7.2,<4.0.0
+
+# Seaborn: visualização estatística baseada em Matplotlib
+# Usado para: heatmaps de matrizes de confusão
 seaborn>=0.12.2,<1.0.0
-plotly>=5.15.0,<6.0.0
 
-# Image Processing
+
+# =============================================================================
+# IMAGE PROCESSING
+# =============================================================================
+# Bibliotecas para manipulação de imagens (Desafio C - imagens próprias)
+
+# Pillow (PIL): manipulação de imagens
+# Usado para: carregar, redimensionar, converter imagens próprias
 Pillow>=10.0.0,<11.0.0
-opencv-python>=4.8.0.74,<5.0.0
 
-# Jupyter/Notebook
+
+# =============================================================================
+# JUPYTER / NOTEBOOK
+# =============================================================================
+# Ambiente interativo para execução do notebook
+
+# Jupyter: ambiente de notebook interativo
 jupyter>=1.0.0,<2.0.0
+
+# IPython: shell interativo Python (dependência do Jupyter)
 ipython>=8.14.0,<9.0.0
+
+# IPykernel: kernel do Python para Jupyter
 ipykernel>=6.25.0,<7.0.0
-notebook>=6.5.4,<7.0.0
 
-# Utilities
+
+# =============================================================================
+# UTILITIES
+# =============================================================================
+# Bibliotecas auxiliares
+
+# TQDM: barras de progresso para loops
 tqdm>=4.65.0,<5.0.0
-python-dotenv>=1.0.0,<2.0.0
-joblib>=1.3.1,<2.0.0
-numexpr>=2.8.4,<3.0.0
 
-# Development (opcional)
-pytest>=7.4.0,<8.0.0
-black>=23.7.0,<24.0.0
-flake8>=6.0.0,<7.0.0
-mypy>=1.4.1,<2.0.0
+# Joblib: paralelização e serialização (salvar modelos)
+joblib>=1.3.1,<2.0.0
+
+
+# =============================================================================
+# DEVELOPMENT (OPCIONAL)
+# =============================================================================
+# Bibliotecas para desenvolvimento e qualidade de código
+# Descomente se quiser usar
+
+# pytest>=7.4.0,<8.0.0        # Testes unitários
+# black>=23.7.0,<24.0.0       # Formatação automática de código
+# flake8>=6.0.0,<7.0.0        # Linter (verificação de estilo)
+# mypy>=1.4.1,<2.0.0          # Verificação de tipos
