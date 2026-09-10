@@ -40,7 +40,7 @@ Classificação multiclasse de imagens 28×28 pixels em 10 dígitos (0–9), com
 
 ## 📁 Estrutura do Projeto
 
-"""
+```
 mnist-digit-classifier/
 │
 ├── mnist_pipeline.ipynb       # Notebook principal
@@ -55,7 +55,7 @@ mnist-digit-classifier/
 ├── results/                   # Gráficos e resultados gerados
 │
 └── docs/images/               # Imagens do README
-"""
+```
 ---
 
 ## ⚙️ Instalação
