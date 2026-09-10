@@ -1,6 +1,5 @@
 # 🧠 MNIST Digit Classifier — Análise Preditiva Multiclasse
 
-
 ## 📋 Índice
 
 - [Sobre o Projeto](#-sobre-o-projeto)
