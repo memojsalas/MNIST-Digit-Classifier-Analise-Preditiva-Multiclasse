@@ -37,7 +37,7 @@ Classificação multiclasse de imagens 28×28 pixels em 10 dígitos (0–9), com
 | **Ambiente** | Jupyter Notebook |
 
 ---
-
+````
 ## 📁 Estrutura do Projeto
 
 mnist-digit-classifier/
@@ -60,7 +60,7 @@ mnist-digit-classifier/
 │
 └── docs/
     └── images/                    # Imagens usadas no README
-
+````
 ---
 
 ## ⚙️ Instalação
