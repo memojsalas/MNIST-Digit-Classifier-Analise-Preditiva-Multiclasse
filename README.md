@@ -60,7 +60,7 @@ mnist-digit-classifier/
 │
 └── docs/
     └── images/                    # Imagens usadas no README
-````
+```
 ---
 
 ## ⚙️ Instalação
@@ -163,7 +163,7 @@ Pipeline de pré-processamento aplicado em dígitos manuscritos digitalizados:
 
 ![Pipeline de Pré-processamento](docs/images/preprocessing_pipeline.png)
 
-![Predições em Imagens Próprias](docs/images/own_images_prediction_MLP.png)
+![Predições em Imagens Próprias](docs/images/results/own_predictions/painel_unico_predicoes.png)
 
 ---
 
