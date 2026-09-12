@@ -75,7 +75,7 @@ mnist-digit-classifier/
 
 # 1. Clonar o repositório
 
-git clone <https://github.com/seu-usuario/mnist-digit-classifier.git>
+git clone <https://github.com/memojsalas/MNIST-Digit-Classifier-Analise-Preditiva-Multiclasse>
 cd mnist-digit-classifier
 
 # 2. Instalar dependências
