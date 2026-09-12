@@ -1,7 +1,5 @@
 # MNIST Digit Classifier
 
-# 🧠 MNIST Digit Classifier
-
 **Pipeline completo de Machine Learning para classificação de dígitos manuscritos.**
 
 [![Python](https://img.shields.io/badge/Python-3.9%2B-blue?logo=python&logoColor=white)](https://www.python.org/)
