@@ -37,7 +37,7 @@ Classificação multiclasse de imagens 28×28 pixels em 10 dígitos (0–9), com
 | **Ambiente** | Jupyter Notebook |
 
 ---
-````
+
 ## 📁 Estrutura do Projeto
 
 mnist-digit-classifier/
@@ -57,10 +57,11 @@ mnist-digit-classifier/
 │       └── digit_9.jpg
 │
 ├── results/                       # Gráficos e resultados gerados
+│   └── own_predictions/           # Painéis de predição em imagens próprias
 │
 └── docs/
     └── images/                    # Imagens usadas no README
-```
+
 ---
 
 ## ⚙️ Instalação
@@ -163,7 +164,11 @@ Pipeline de pré-processamento aplicado em dígitos manuscritos digitalizados:
 
 ![Pipeline de Pré-processamento](docs/images/preprocessing_pipeline.png)
 
-![Predições em Imagens Próprias](docs/images/results/own_predictions/painel_unico_predicoes.png)
+#### Painel Único de Predições
+
+O painel consolidado mostra cada imagem processada lado a lado com suas probabilidades de classe, destacando acertos (✅) e erros (❌):
+
+![Painel de Predições](docs/images/painel_unico_predicoes.png)
 
 ---
 
