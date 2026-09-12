@@ -168,7 +168,7 @@ Pipeline de pré-processamento aplicado em dígitos manuscritos digitalizados:
 
 O painel consolidado mostra cada imagem processada lado a lado com suas probabilidades de classe:
 
-![Painel Único de Predições](results/own_predictions/painel_unico_predicoes.png)
+![Painel Único de Predições](results\own_predictions\painel_unico_predicoes.png)
 
 ---
 
