@@ -28,7 +28,7 @@ Classificação multiclasse de imagens 28×28 pixels em 10 dígitos (0–9), com
 ## 🛠️ Tecnologias Utilizadas
 
 | Categoria | Ferramentas |
-|-----------|-------------|
+| ----------- | ------------- |
 | **Linguagem** | Python 3.9 – 3.13 |
 | **Machine Learning** | scikit-learn |
 | **Manipulação de Dados** | NumPy, Pandas |
@@ -40,41 +40,50 @@ Classificação multiclasse de imagens 28×28 pixels em 10 dígitos (0–9), com
 
 ## 📁 Estrutura do Projeto
 
-```
 mnist-digit-classifier/
 │
-├── mnist_pipeline.ipynb       # Notebook principal
-├── requirements.txt           # Dependências
-├── README.md                  # Documentação
-├── .gitignore                 # Arquivos ignorados pelo Git
+├── mnist_pipeline.ipynb           # Notebook principal
+├── requirements.txt               # Dependências
+├── README.md                      # Documentação
+├── .gitignore                     # Arquivos ignorados pelo Git
+├── LICENSE                        # Licença MIT
 │
 ├── data/
-│   ├── mnist.npz              # Dataset em cache (gerado automaticamente)
-│   └── own_images/            # Imagens manuscritas próprias
+│   ├── mnist.npz                  # Dataset em cache (gerado automaticamente)
+│   └── own_images/                # Imagens manuscritas próprias
+│       ├── digit_0.jpg
+│       ├── digit_1.jpg
+│       ├── ...
+│       └── digit_9.jpg
 │
-├── results/                   # Gráficos e resultados gerados
+├── results/                       # Gráficos e resultados gerados
+│   └── own_predictions/           # Painéis de predição em imagens próprias
 │
-└── docs/images/               # Imagens do README
-```
+└── docs/
+    └── images/                    # Imagens usadas no README
+
 ---
 
 ## ⚙️ Instalação
 
 ### Pré-requisitos
+
 - Python 3.9 a 3.13 (recomendado: **3.11** ou **3.12**)
 - Pip instalado
 
 ### Passos
 
 # 1. Clonar o repositório
-git clone https://github.com/memojsalas/MNIST-Digit-Classifier-Analise-Preditiva-Multiclasse/tree/main.git
 
+git clone <https://github.com/seu-usuario/mnist-digit-classifier.git>
 cd mnist-digit-classifier
 
 # 2. Instalar dependências
+
 pip install -r requirements.txt
 
 # 3. Verificar instalação
+
 python check_requirements.py
 
 ---
@@ -87,10 +96,20 @@ Execute as células **em ordem** — a estrutura de pastas e o cache do dataset 
 
 ---
 
+## 📊 Análise Exploratória
+
+O dataset MNIST é **balanceado**, com aproximadamente 7.000 imagens por dígito (0-9).
+
+![Distribuição das Classes](docs/images/class_distribution.png)
+
+![Exemplos de Dígitos](docs/images/digit_grid.png)
+
+---
+
 ## 🔬 Pipeline do Projeto
 
 | Etapa | Descrição |
-|-------|-----------|
+| ------- | ----------- |
 | **1. EDA** | Carregamento do MNIST + análise exploratória |
 | **2. Pré-processamento** | Divisão 70/10/20 + normalização [0,1] |
 | **3. Modelagem** | Random Forest, KNN e MLP |
@@ -99,26 +118,57 @@ Execute as células **em ordem** — a estrutura de pastas e o cache do dataset 
 
 ---
 
-## 📊 Resultados
+## 📈 Resultados
+
+### Comparação dos Modelos
 
 | Modelo | Acurácia | Tempo de Treino |
-|--------|----------|-----------------|
+| -------- | ---------- | ----------------- |
 | Random Forest | ~96,9% | ~35 s |
 | KNN | ~97,0% | < 1 s |
 | **MLP (scikit-learn)** | **~98,0%** | ~120 s |
 
 > 💡 Valores típicos. Podem variar ligeiramente entre execuções.
 
+![Comparação de Modelos](docs/images/model_comparison.png)
+
+### Matrizes de Confusão
+
+![Matriz de Confusão - MLP](docs/images/confusion_matrix_MLP_scikit-learn.png)
+
 **Principais confusões:** 4 ↔ 9 · 7 ↔ 1 · 3 ↔ 5
+
+### Curva de Aprendizado do MLP
+
+![Curva de Aprendizado](docs/images/mlp_learning_curve.png)
 
 ---
 
 ## 🛡️ Análise de Robustez
 
-- **Class Masking**: modelo treinado sem os dígitos 4 e 7
-- **Inferência OOD**: avaliação do comportamento em classes nunca vistas
-- **Overconfidence**: análise da "falsa certeza" em modelos tradicionais
-- **Imagens próprias**: teste de generalização com dígitos manuscritos reais
+### Teste OOD (Out-of-Distribution)
+
+Modelo treinado **sem os dígitos 4 e 7**, testado nessas classes ocultadas:
+
+![Matriz de Confusão OOD](docs/images/confusion_matrix_ood.png)
+
+**Conclusões:**
+
+- O modelo atribui classes conhecidas mesmo sem nunca ter visto 4 e 7
+- **Overconfidence**: alta confiança em predições erradas
+- É necessário implementar **detecção de OOD** em sistemas críticos
+
+### Inferência com Imagens Próprias
+
+Pipeline de pré-processamento aplicado em dígitos manuscritos digitalizados:
+
+![Pipeline de Pré-processamento](docs/images/preprocessing_pipeline.png)
+
+#### Painel Único de Predições
+
+O painel consolidado mostra cada imagem processada lado a lado com suas probabilidades de classe:
+
+![Painel Único de Predições](docs/images/painel_unico_predicoes.png)
 
 ---
 
@@ -129,10 +179,13 @@ Execute as células **em ordem** — a estrutura de pastas e o cache do dataset 
 - Otimização de hiperparâmetros (GridSearch / Optuna)
 - API REST para inferência em produção
 
+---
 
 ## 📄 Licença
 
 Distribuído sob a licença **MIT**. Consulte o arquivo [LICENSE](LICENSE) para mais informações.
+
+---
 
 ## 📚 Referências
 
@@ -141,3 +194,4 @@ Distribuído sob a licença **MIT**. Consulte o arquivo [LICENSE](LICENSE) para 
 - [NumPy Documentation](https://numpy.org/)
 - [Pandas Documentation](https://pandas.pydata.org/)
 
+---
