@@ -61,6 +61,7 @@ mnist-digit-classifier/
 │
 └── docs/
     └── images/                    # Imagens usadas no README
+    
 ```
 ---
 
