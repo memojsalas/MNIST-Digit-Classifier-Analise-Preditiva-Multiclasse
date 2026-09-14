@@ -5,7 +5,7 @@
 [![Python](https://img.shields.io/badge/Python-3.9%2B-blue?logo=python&logoColor=white)](https://www.python.org/)
 [![Scikit-learn](https://img.shields.io/badge/Scikit--learn-1.3%2B-F7931E?logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Status](https://img.shields.io/badge/Status-Completo-success.svg)]()
+[![Status](https://img.shields.io/badge/Status-Completo-success.svg)]
 
 ---
 
@@ -39,7 +39,9 @@ Classificação multiclasse de imagens 28×28 pixels em 10 dígitos (0–9), com
 ---
 
 ## 📁 Estrutura do Projeto
-```
+
+```text
+
 mnist-digit-classifier/
 │
 ├── mnist_pipeline.ipynb           # Notebook principal
@@ -63,6 +65,7 @@ mnist-digit-classifier/
     └── images/                    # Imagens usadas no README
     
 ```
+
 ---
 
 ## ⚙️ Instalação
@@ -74,16 +77,16 @@ mnist-digit-classifier/
 
 ### Passos
 
-# 1. Clonar o repositório
+#### 1. Clonar o repositório
 
 git clone <https://github.com/memojsalas/MNIST-Digit-Classifier-Analise-Preditiva-Multiclasse>
 cd mnist-digit-classifier
 
-# 2. Instalar dependências
+#### 2. Instalar dependências
 
 pip install -r requirements.txt
 
-# 3. Verificar instalação
+#### 3. Verificar instalação
 
 python check_requirements.py
 
