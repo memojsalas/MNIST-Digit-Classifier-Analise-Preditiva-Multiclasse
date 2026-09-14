@@ -1,0 +1,11 @@
+Arquivo,Real,Random Forest,KNN,MLP (scikit-learn)
+digit_0.jpg,0,0,0,0
+digit_1.jpg,1,1,1,1
+digit_2.jpg,2,2,2,2
+digit_3.jpg,3,3,3,3
+digit_4.jpg,4,4,4,4
+digit_5.jpg,5,5,5,5
+digit_6.jpg,6,5,5,6
+digit_7.jpg,7,8,1,7
+digit_8.jpg,8,8,8,8
+digit_9.jpg,9,3,5,9

@@ -1,0 +1,11 @@
+arquivo,predicao,real,confianca,correto
+digit_0.jpg,0,0,0.999997,True
+digit_1.jpg,1,1,0.99695826,True
+digit_2.jpg,2,2,1.0,True
+digit_3.jpg,3,3,0.9999964,True
+digit_4.jpg,4,4,0.99999225,True
+digit_5.jpg,5,5,0.99982315,True
+digit_6.jpg,6,6,0.9999851,True
+digit_7.jpg,7,7,0.9999291,True
+digit_8.jpg,8,8,0.9999685,True
+digit_9.jpg,9,9,0.9960949,True

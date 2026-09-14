@@ -1,6 +1,22 @@
 # =============================================================================
 # .gitignore - Projeto MNIST Digit Classifier
-# Pipeline de Classificação com Random Forest, KNN e MLP (scikit-learn)
+# =============================================================================
+# Este arquivo especifica quais arquivos o Git deve IGNORAR.
+#
+# ✅ VERSIONADO:
+#    • Código fonte (.py, .ipynb)
+#    • README.md, requirements.txt, LICENSE
+#    • Imagens próprias (data/own_images/)
+#    • Resultados principais (results/*.png, results/*.csv)
+#    • Imagens do README (docs/images/)
+#
+# ❌ IGNORADO:
+#    • Ambientes virtuais, cache Python
+#    • Checkpoints do Jupyter
+#    • Configurações de IDE
+#    • Dataset em cache (data/mnist.npz)
+#    • Modelos treinados (.pkl, .joblib)
+#    • Credenciais (.env, chaves)
 # =============================================================================
 
 
@@ -8,12 +24,9 @@
 # 1. PYTHON - ARQUIVOS COMPILADOS E CACHE
 # =============================================================================
 
-# Bytecode compilado do Python (gerado automaticamente)
 __pycache__/
 *.py[cod]
 *$py.class
-
-# Arquivos C-extension compilados
 *.so
 
 # Distribuição e empacotamento
@@ -62,7 +75,6 @@ virtualenv/
 # 3. JUPYTER NOTEBOOK
 # =============================================================================
 
-# Checkpoints automáticos do Jupyter
 .ipynb_checkpoints/
 *.ipynb_checkpoints
 
@@ -132,85 +144,111 @@ $RECYCLE.BIN/
 
 
 # =============================================================================
-# 6. DADOS - DATASETS E ARQUIVOS GRANDES
+# 6. DADOS - IGNORAR DATASETS GRANDES, MANTER IMAGENS PRÓPRIAS
 # =============================================================================
 
-# Datasets brutos e processados (MNIST é baixado automaticamente)
-data/raw/
-data/processed/
+# Ignorar dados brutos e processados
+#data/raw/
+#data/processed/
 
-# Arquivos de dados grandes
-*.csv
-*.tsv
-*.h5
-*.hdf5
-*.npz
-*.npy
-*.parquet
-*.feather
+# Ignorar arquivos de dados grandes
+data/*.pkl
+data/*.pickle
+data/*.h5
+data/*.hdf5
+data/*.npy
+data/*.parquet
+data/*.feather
 
-# ⚠️ EXCEÇÃO: Manter as imagens próprias do Desafio C
+# ⚠️ EXCEÇÃO: MANTER as imagens próprias do Desafio C
 !data/own_images/
 !data/own_images/*.jpg
 !data/own_images/*.jpeg
 !data/own_images/*.png
 
-# ⚠️ EXCEÇÃO: Manter dados de exemplo pequenos
+# ⚠️ EXCEÇÃO: MANTER dados de exemplo pequenos
 !data/samples/
 !data/samples/*
 
 
 # =============================================================================
-# 7. RESULTADOS E OUTPUTS
+# 7. RESULTADOS - VERSIONAR IMAGENS E TABELAS PRINCIPAIS
 # =============================================================================
 
-# Resultados gerados durante execução
-results/
-output/
-outputs/
+# Ignorar arquivos temporários e de cache
+results/*.tmp
+results/*.cache
+results/*.log
+results/temp/
+results/.ipynb_checkpoints/
 
-# Gráficos e figuras gerados automaticamente
-*.png
-*.jpg
-*.jpeg
-*.gif
-*.svg
-*.pdf
-*.eps
+# Ignorar arquivos grandes específicos (descomente se necessário)
+# results/comparison_table_full.csv
+# results/*_backup.png
 
-# ⚠️ EXCEÇÃO: Manter imagens usadas no README
+# ⚠️ EXCEÇÃO: MANTER imagens PNG
+!results/*.png
+
+# ⚠️ EXCEÇÃO: MANTER tabelas CSV
+!results/*.csv
+
+# ⚠️ EXCEÇÃO: MANTER painéis consolidados
+!results/own_predictions/
+!results/own_predictions/*.png
+
+# ⚠️ EXCEÇÃO: MANTER gráficos de análise
+!results/ood_*.png
+!results/loss_analysis.png
+!results/validation_iterative.png
+!results/cross_validation.png
+
+# Ignorar arquivos de debug
+results/debug_*.py
+results/debug_*.txt
+
+
+# =============================================================================
+# 8. DOCUMENTAÇÃO - MANTER IMAGENS DO README
+# =============================================================================
+
+# Ignorar builds de documentação
+docs/_build/
+docs/build/
+site/
+
+# ⚠️ EXCEÇÃO: MANTER imagens usadas no README
 !docs/images/
 !docs/images/*.png
 !docs/images/*.jpg
 !docs/images/*.jpeg
-
-# Logs
-*.log
-logs/
-*.log.*
-
-# Métricas exportadas
-metrics/
+!docs/images/*.gif
 
 
 # =============================================================================
-# 8. MODELOS TREINADOS
+# 9. MODELOS TREINADOS
 # =============================================================================
 
-# Modelos salvos com joblib/pickle
+# Ignorar modelos salvos (são binários grandes)
 models/
 saved_models/
+checkpoints/
+
+# Arquivos de modelo
 *.pkl
 *.pickle
 *.joblib
+*.h5
+*.keras
+*.pb
+*.onnx
+*.tflite
 
-# Checkpoints
-checkpoints/
-*.ckpt
+# ⚠️ EXCEÇÃO: MANTER modelos pequenos de exemplo (se houver)
+# !models/example_model.pkl
 
 
 # =============================================================================
-# 9. CREDENCIAIS E SEGURANÇA
+# 10. CREDENCIAIS E SEGURANÇA
 # =============================================================================
 
 # Arquivos de ambiente
@@ -226,14 +264,14 @@ checkpoints/
 *.p12
 *.pfx
 
-# Configurações locais
+# Configurações locais com credenciais
 config.local.*
 secrets.*
 credentials.*
 
 
 # =============================================================================
-# 10. CACHE E TEMPORÁRIOS
+# 11. CACHE E TEMPORÁRIOS
 # =============================================================================
 
 # Cache Python
@@ -259,45 +297,69 @@ temp/
 
 
 # =============================================================================
-# 11. ARQUIVOS ESPECÍFICOS DO PROJETO
+# 12. ARQUIVOS ESPECÍFICOS DO PROJETO
 # =============================================================================
 
-# Imagens processadas temporárias (Desafio C)
+# Arquivos temporários de imagens processadas
 temp_processed_*.png
 processed_*.jpg
-
-# Arquivos de debug
-debug_*.py
-test_*.tmp
-
-# Notebooks temporários
 *_temp.ipynb
 *_test.ipynb
 untitled*.ipynb
 
+# Arquivos de debug
+debug_*.py
+debug_*.txt
+debug_*.log
+
+# Notebooks backup
+*_backup.ipynb
+*_old.ipynb
+*-Copy*.ipynb
+*-Copy*.py
+
 
 # =============================================================================
-# RESUMO
+# 13. DOCKER (SE APLICÁVEL)
+# =============================================================================
+
+.dockerignore
+Dockerfile.local
+docker-compose.override.yml
+
+
+# =============================================================================
+# 14. GITHUB ACTIONS (NÃO IGNORAR)
+# =============================================================================
+
+# ⚠️ NÃO ignorar workflows do GitHub Actions
+!.github/
+!.github/workflows/
+!.github/workflows/*.yml
+!.github/workflows/*.yaml
+
+
+# =============================================================================
+# RESUMO DO QUE É VERSIONADO
 # =============================================================================
 #
-# ✅ IGNORA:
-#    • Ambientes virtuais (venv/)
-#    • Cache Python (__pycache__/)
-#    • Checkpoints do Jupyter (.ipynb_checkpoints/)
-#    • Configurações de IDE (.vscode/, .idea/)
-#    • Arquivos do sistema (.DS_Store, Thumbs.db)
-#    • Datasets grandes e processados
-#    • Resultados gerados (imagens, logs)
-#    • Modelos treinados (.pkl, .joblib)
-#    • Credenciais (.env, chaves)
-#    • Cache e temporários
+# ✅ VERSIONADO:
+#    • README.md, requirements.txt, LICENSE
+#    • mnist_pipeline.ipynb (notebook)
+#    • mnist_pipeline.py (se existir)
+#    • check_requirements.py (se existir)
+#    • data/own_images/*.jpg (imagens próprias)
+#    • results/*.png (gráficos gerados)
+#    • results/*.csv (tabelas de resultados)
+#    • results/own_predictions/*.png (painéis)
+#    • docs/images/*.png (imagens do README)
 #
-# ✅ MANTÉM VERSIONADO:
-#    • Código fonte (.py, .ipynb)
-#    • README.md
-#    • requirements.txt
-#    • LICENSE
-#    • Imagens próprias (data/own_images/)
-#    • Imagens do README (docs/images/)
+# ❌ IGNORADO:
+#    • data/mnist.npz (cache do MNIST)
+#    • venv/, __pycache__/, .ipynb_checkpoints/
+#    • .vscode/, .idea/, .DS_Store, Thumbs.db
+#    • models/ (modelos treinados)
+#    • .env, chaves e credenciais
+#    • Arquivos temporários e caches
 #
 # =============================================================================
