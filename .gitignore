@@ -148,8 +148,8 @@ $RECYCLE.BIN/
 # =============================================================================
 
 # Ignorar dados brutos e processados
-data/raw/
-data/processed/
+#data/raw/
+#data/processed/
 
 # Ignorar arquivos de dados grandes
 data/*.pkl
