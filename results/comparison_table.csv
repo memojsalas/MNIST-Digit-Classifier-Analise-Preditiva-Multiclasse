@@ -1,0 +1,4 @@
+Modelo,Acurácia,Precisão,Recall,F1-Score,Treino (s),Predição (s)
+Random Forest,0.9618,0.9618,0.9618,0.9617,6.5939,0.3258
+KNN,0.9699,0.9701,0.9699,0.9698,0.0278,14.9998
+MLP (scikit-learn),0.9784,0.9785,0.9784,0.9784,64.9321,0.0877
